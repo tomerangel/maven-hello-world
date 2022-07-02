@@ -25,6 +25,8 @@ jobs:
     - name: Set new version inscrease by 1 
       run: |
         cd my-app
+        ls -l
         mvn versions:resolve-ranges
+        cat pom.xml
         mvn compile
         java -cp target/classes com.mycompany.app.App
