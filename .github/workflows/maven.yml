@@ -23,4 +23,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Set new version inscrease by 1 
-      run: mvn versions:resolve-ranges
+      run: |
+        cd my-app
+        mvn versions:resolve-ranges
+        mvn compile
+        java -cp target/classes com.mycompany.app.App
