@@ -23,7 +23,7 @@ jobs:
       with:
         java-version: 1.8
         
-    - name: Set new version inscrease by 1 
+    - name: Set new version inscrease by 1 And build project
       run: |
         cd my-app
         ls -l
@@ -42,10 +42,19 @@ jobs:
         name: github-actions-artifact
         path: my-app/artifact-app
   
-    - name: build a dockerfile
+    - name: Build a dockerfile
       run: |
         cd my-app
         docker build -t my-app-tomerangel:1.0.1-SNAPSHOT .
+      
+    - name: Push Image to DockerHub
+      run: docker push my-app-tomerangel:1.0.1-SNAPSHOT
+      
+      
+      
+      
+      
+      
       
     - name: test
       run: |
