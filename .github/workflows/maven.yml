@@ -42,6 +42,13 @@ jobs:
         name: github-actions-artifact
         path: my-app/artifact-app
   
+  
+    - name: Download from Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: github-actions-artifact
+        path: target\
+
     - name: Build a dockerfile
       run: |
         cd my-app
@@ -54,12 +61,3 @@ jobs:
         docker push 102030102030/my-app-tomerangel:1.0.1
       
       
-    - name: Download from Artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: github-actions-artifact
-        path: target\
-        
-    - name: echo download path
-      run: echo ${{steps.download.outputs.download-path}}
-  
