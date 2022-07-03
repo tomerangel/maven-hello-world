@@ -8,6 +8,8 @@ COPY ./ ./
 # the second stage of our build will use open jdk 8 on alpine 3.9
 RUN cd target && ls
 RUN pwd
+# line 1-10 dont do noting is only to see multi state build !! 
+# without artifact i can do COPY --from=MAVEN_BUILD /usr/app/target/my-app-1.0.1.jar /my-app.jar and its same jar after build. but locali
 FROM openjdk:8-jre-alpine3.9
 ENV SERVICE_NAME="tomer"
 
@@ -16,7 +18,7 @@ RUN addgroup --gid 1001 -S $SERVICE_NAME && \
     mkdir -p /var/log/$SERVICE_NAME && \
     chown $SERVICE_NAME:$SERVICE_NAME /var/log/$SERVICE_NAME
 # copy only the artifacts we need from the first stage and discard the rest
-COPY --from=MAVEN_BUILD /usr/app/target/my-app-1.0.1.jar /my-app.jar
+COPY /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar /my-app.jar
 # set the startup command to execute the jar
 USER $SERVICE_NAME
 EXPOSE 8080
