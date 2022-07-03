@@ -49,7 +49,7 @@ jobs:
       
     - name: Push Image to DockerHub
       run: |
-        docker login registry-1.docker.io/v1
+        docker login -u 102030102030 -p 156478933
         docker tag my-app-tomerangel:1.0.1-SNAPSHOT 102030102030/dockerhub:my-app-tomerangel:1.0.1-SNAPSHOT
         docker push my-app-tomerangel:1.0.1-SNAPSHOT
       
