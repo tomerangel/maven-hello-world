@@ -28,6 +28,7 @@ jobs:
         cd my-app
         ls -l
         cat pom.xml
+        mvn versions:resolve-ranges -DprocessDependencies=false
         mvn compile
         java -cp target/classes com.mycompany.app.App
     - name: test
