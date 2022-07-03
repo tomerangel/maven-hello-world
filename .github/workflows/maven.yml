@@ -49,7 +49,9 @@ jobs:
       run: |
        pwd
        ls
-       ls -l /home/runner/work/maven-hello-world/maven-hello-world/target\
+       cd /home/runner/work/maven-hello-world/maven-hello-world/target\
+       ls
+       pwd 
       
       
     - name: Build a dockerfile
