@@ -34,6 +34,15 @@ jobs:
 
         echo " test 2"
         java -cp target/classes com.mycompany.app.App
+        mkdir artifact-app && cp target/*.jar artifact-app
+        
+    - name: Publish to Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: github-actions-artifact
+        path: artifact-app
+  
+  
     - name: test
       run: |
         ls -l
