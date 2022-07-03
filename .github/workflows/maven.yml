@@ -40,10 +40,10 @@ jobs:
         pwd
         cd my-app
         cat pom.xml
-        cd target/classes
+        cd target
         ls -l
         pwd
-        cd com
+        cd classes/com
         ls
         pwd
         cd mycompany
