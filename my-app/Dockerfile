@@ -4,5 +4,7 @@ FROM maven:3.6.3-jdk-8
 COPY ./ ./
 # package our application code
 RUN mvn clean package
+ls -l
+pwd
 # set the startup command to execute the jar
 CMD ["java", "-jar", "target/my-app-1.0.1.jar"]
