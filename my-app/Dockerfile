@@ -12,13 +12,13 @@ RUN pwd
 # without artifact i can do COPY --from=MAVEN_BUILD /usr/app/target/my-app-1.0.1.jar /my-app.jar and its same jar after build. but locali
 FROM openjdk:8-jre-alpine3.9
 ENV SERVICE_NAME="tomer"
-
+WORKDIR usr/app
 RUN addgroup --gid 1001 -S $SERVICE_NAME && \
     adduser -G $SERVICE_NAME --shell /bin/false --disabled-password -H --uid 1001 $SERVICE_NAME && \
     mkdir -p /var/log/$SERVICE_NAME && \
     chown $SERVICE_NAME:$SERVICE_NAME /var/log/$SERVICE_NAME
 # copy only the artifacts we need from the first stage and discard the rest
-COPY /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar /my-app.jar
+COPY /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar usr/app/my-app.jar
 # set the startup command to execute the jar
 USER $SERVICE_NAME
 EXPOSE 8080
