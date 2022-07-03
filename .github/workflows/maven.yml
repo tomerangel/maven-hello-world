@@ -40,6 +40,6 @@ jobs:
         cd target/classes
         ls -l
         pwd
-        cd com
+        cd com/mycompany/app/App
         ls
         pwd
