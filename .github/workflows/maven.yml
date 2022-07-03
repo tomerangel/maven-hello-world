@@ -48,7 +48,13 @@ jobs:
       with:
         name: github-actions-artifact
         path: target\
-
+    - name: test
+      run: |
+       pwd
+       ls
+       ls -l /home/runner/work/maven-hello-world/maven-hello-world/target/
+      
+      
     - name: Build a dockerfile
       run: |
         cd my-app
