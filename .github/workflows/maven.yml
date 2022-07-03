@@ -42,7 +42,11 @@ jobs:
         name: github-actions-artifact
         path: my-app/artifact-app
   
-  
+    - name: build a dockerfile
+      run: |
+        cd my-app
+        docker build -t test:1.0-SNAPSHOT .
+      
     - name: test
       run: |
         ls -l
