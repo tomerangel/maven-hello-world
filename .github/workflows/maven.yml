@@ -35,3 +35,8 @@ jobs:
       run: |
         ls -l
         pwd
+        cd my-app
+        cat pom.xml
+        cd target/classes
+        ls -l
+        pwd
