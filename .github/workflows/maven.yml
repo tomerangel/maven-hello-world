@@ -45,10 +45,11 @@ jobs:
     - name: build a dockerfile
       run: |
         cd my-app
-        docker build -t test:1.0-SNAPSHOT .
+        docker build -t my-app-tomerangel:1.0.1-SNAPSHOT .
       
     - name: test
       run: |
+        docker images
         ls -l
         pwd
         cd my-app
