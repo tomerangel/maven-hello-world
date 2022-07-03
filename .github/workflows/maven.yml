@@ -49,8 +49,9 @@ jobs:
       run: |
        pwd
        ls
-       cd /home/runner/work/maven-hello-world/maven-hello-world/target\
-    - name: test
+       cat target/my-app-1.0.1.jar
+       
+    - name: test2
       run: |
        pwd
        ls
