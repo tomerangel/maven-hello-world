@@ -28,8 +28,9 @@ jobs:
         cd my-app
         ls -l
         cat pom.xml
-        mvn versions:resolve-ranges -DprocessDependencies=false
+        mvn -B release:prepare release:perform
         mvn compile
+        echo "test"
         java -cp target/classes com.mycompany.app.App
     - name: test
       run: |
