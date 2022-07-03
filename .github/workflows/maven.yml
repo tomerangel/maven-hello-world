@@ -54,22 +54,12 @@ jobs:
         docker push 102030102030/my-app-tomerangel:1.0.1
       
       
-    - name: test
-      run: |
-        docker images
-        ls -l
-        pwd
-        cd my-app
-        cat pom.xml
-        cd target
-        ls -l
-        pwd
-        cd classes/com
-        ls
-        pwd
-        cd mycompany
-        ls
-        cd app
-        pwd
-        ls -l
-        cat App.class
+    - name: Download from Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: github-actions-artifact
+        path: target\
+        
+    - name: echo download path
+      run: echo ${{steps.download.outputs.download-path}}
+  
