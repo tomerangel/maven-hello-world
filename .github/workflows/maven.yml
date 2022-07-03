@@ -44,12 +44,14 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: github-actions-artifact
-        path: target\
+        path: target/
     - name: test
       run: |
        pwd
        ls
-       cat target\
+       cd target/
+       pwd
+       ls
        
     - name: test2
       run: |
