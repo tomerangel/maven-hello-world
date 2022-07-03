@@ -49,7 +49,7 @@ jobs:
       
     - name: Push Image to DockerHub
       run: |
-        sudo docker login -u 102030102030
+        sudo docker login -u tomerangel9@gmail.com
         docker tag my-app-tomerangel:1.0.1-SNAPSHOT 102030102030/dockerhub:my-app-tomerangel:1.0.1-SNAPSHOT
         docker push my-app-tomerangel:1.0.1-SNAPSHOT
       
