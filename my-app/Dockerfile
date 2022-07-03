@@ -19,4 +19,5 @@ RUN addgroup --gid 1001 -S $SERVICE_NAME && \
 COPY --from=MAVEN_BUILD /usr/app/target/my-app-1.0.1.jar /my-app.jar
 # set the startup command to execute the jar
 USER $SERVICE_NAME
+EXPOSE 8080
 CMD ["java", "-jar", "/my-app.jar"]
