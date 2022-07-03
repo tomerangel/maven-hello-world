@@ -48,9 +48,10 @@ jobs:
         docker build -t my-app-tomerangel:1.0.1-SNAPSHOT .
       
     - name: Push Image to DockerHub
-      run: docker push my-app-tomerangel:1.0.1-SNAPSHOT
-      
-      
+      run: |
+        docker login -u 102030102030
+        docker tag my-app-tomerangel:1.0.1-SNAPSHOT 102030102030/dockerhub:my-app-tomerangel:1.0.1-SNAPSHOT
+        docker push my-app-tomerangel:1.0.1-SNAPSHOT
       
       
       
