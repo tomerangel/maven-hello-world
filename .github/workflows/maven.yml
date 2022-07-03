@@ -28,9 +28,11 @@ jobs:
         cd my-app
         ls -l
         cat pom.xml
-        mvn -B release:prepare release:perform
+        
         mvn compile
         echo "test"
+        mvn -B release:prepare release:perform
+        echo " test 2"
         java -cp target/classes com.mycompany.app.App
     - name: test
       run: |
