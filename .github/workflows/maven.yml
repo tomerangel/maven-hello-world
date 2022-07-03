@@ -40,3 +40,6 @@ jobs:
         cd target/classes
         ls -l
         pwd
+        cd com
+        ls
+        pwd
