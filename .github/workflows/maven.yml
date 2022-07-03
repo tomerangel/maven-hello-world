@@ -50,8 +50,12 @@ jobs:
        pwd
        ls
        cd /home/runner/work/maven-hello-world/maven-hello-world/target\
+    - name: test
+      run: |
+       pwd
        ls
-       pwd 
+
+
       
       
     - name: Build a dockerfile
