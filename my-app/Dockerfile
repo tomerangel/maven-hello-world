@@ -4,9 +4,9 @@ WORKDIR usr/app
 # copy the pom and src code to the container
 COPY ./ ./
 # package our application code
-RUN mvn clean package
+# RUN mvn clean package
 # the second stage of our build will use open jdk 8 on alpine 3.9
-RUN ls
+RUN cd target && ls
 RUN pwd
 FROM openjdk:8-jre-alpine3.9
 ENV SERVICE_NAME="tomer"
