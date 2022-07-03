@@ -28,10 +28,10 @@ jobs:
         cd my-app
         ls -l
         cat pom.xml
-        
+        mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
         mvn compile
         echo "test"
-        mvn -B release:prepare release:perform
+
         echo " test 2"
         java -cp target/classes com.mycompany.app.App
     - name: test
