@@ -28,10 +28,8 @@ jobs:
         cd my-app
         ls -l
         mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
-        cat pom.xml
+        echo ${parsedVersion.majorVersion}
         mvn -B package
-        echo "test"
-        echo " test 2"
         java -cp target/classes com.mycompany.app.App
         mkdir artifact-app && cp target/*.jar artifact-app
         ls -l
@@ -52,7 +50,7 @@ jobs:
       run: |
        pwd
        ls
-       ls -l /home/runner/work/maven-hello-world/maven-hello-world/target/
+       ls -l /home/runner/work/maven-hello-world/maven-hello-world/target\
       
       
     - name: Build a dockerfile
