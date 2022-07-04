@@ -17,6 +17,7 @@ RUN addgroup --gid 1001 -S $SERVICE_NAME && \
 # COPY /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar /app/my-app.jar -- copy from artifact!! but the bouns we want multistage docker!
 COPY --from=MAVEN_BUILD /usr/app/target/my-app-1.0.1.jar /my-app.jar
 # set the startup command to execute the jar
+EXPOSE 8080
 USER $SERVICE_NAME
 CMD ["java", "-jar", "/my-app.jar"]
 
