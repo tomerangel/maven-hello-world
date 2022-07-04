@@ -15,7 +15,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env: 
+      projectversion: 1.0.1
+    
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -25,13 +27,12 @@ jobs:
         
     - name: Build Application and Set new version inscrease +1 
       run: |
+        echo "env ${{env.projectversion}}
         cd my-app
-        ls -l
         mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
         mvn -B package
         java -cp target/classes com.mycompany.app.App
         mkdir artifact-app && cp target/*.jar artifact-app
-        ls -l
         
     - name: Publish to Artifact
       uses: actions/upload-artifact@v2
