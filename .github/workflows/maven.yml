@@ -27,7 +27,7 @@ jobs:
         
     - name: Build Application and Set new version inscrease +1 
       run: |
-        echo "env ${{env.projectversion}}
+        echo "env ${{env.projectversion}}"
         cd my-app
         mvn build-helper:parse-version versions:set -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} versions:commit
         mvn -B package
@@ -51,17 +51,17 @@ jobs:
     - name: Build a Dockerfile
       run: |
         cd my-app
-        docker build -t my-app-tomerangel:1.0.1-SNAPSHOT .
+        docker build -t my-app-tomerangel:${{env.projectversion}}-SNAPSHOT .
       
       
     - name: Push Image to DockerHub
       run: |
         docker login -u ${{ secrets.USER_NAME }} -p ${{ secrets.USER_PASS }}
-        docker tag my-app-tomerangel:1.0.1-SNAPSHOT 102030102030/my-app-tomerangel:1.0.1
-        docker push 102030102030/my-app-tomerangel:1.0.1
+        docker tag my-app-tomerangel:${{env.projectversion}}-SNAPSHOT 102030102030/my-app-tomerangel:${{env.projectversion}}
+        docker push 102030102030/my-app-tomerangel:${{env.projectversion}}
         
         
     - name: Run a Docker Container :) DONE!
       run: |
-        docker run -d -p 8080:8080 --name tomerapplicationmaven 102030102030/my-app-tomerangel:1.0.1
+        docker run -d -p 8080:8080 --name tomerapplicationmaven 102030102030/my-app-tomerangel:${{env.projectversion}}
       
