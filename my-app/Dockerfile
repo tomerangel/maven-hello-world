@@ -18,7 +18,7 @@ RUN addgroup --gid 1001 -S $SERVICE_NAME && \
     mkdir -p /var/log/$SERVICE_NAME && \
     chown $SERVICE_NAME:$SERVICE_NAME /var/log/$SERVICE_NAME
 # copy only the artifacts we need from the first stage and discard the rest
-ADD /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar /app/my-app.jar
+COPY /home/runner/work/maven-hello-world/maven-hello-world/target/my-app-1.0.1.jar /app/my-app.jar
 # set the startup command to execute the jar
 USER $SERVICE_NAME
 EXPOSE 8080
